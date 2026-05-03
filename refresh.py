@@ -97,7 +97,8 @@ SEVERITY_MAP = {
 STATUS_ORDER = [
     "New", "Active", "Evaluating", "Needs Clarification",
     "Pending Customer Feedback", "QA Review",
-    "Scheduled Deployment", "Re-Open", "Resolved"
+    "Scheduled Deployment", "Re-Open", "Resolved",
+    "Closed", "Rejected", "Moved to Backlog"
 ]
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -587,18 +588,20 @@ const STATUS_COLORS = {{
   "New":"#6366f1","Active":"#3b82f6","Evaluating":"#f59e0b",
   "Needs Clarification":"#8b5cf6","Pending Customer Feedback":"#ec4899",
   "QA Review":"#14b8a6","Scheduled Deployment":"#22c55e",
-  "Re-Open":"#ef4444","Resolved":"#6b7280"
+  "Re-Open":"#ef4444","Resolved":"#6b7280",
+  "Closed":"#6b7280","Rejected":"#dc2626","Moved to Backlog":"#475569"
 }};
 const BADGE_CLASS = {{
   "New":"b-new","Active":"b-active","Evaluating":"b-eval",
   "Needs Clarification":"b-clarify","Pending Customer Feedback":"b-pcf",
   "QA Review":"b-qa","Scheduled Deployment":"b-deploy",
   "Re-Open":"b-reopen","Resolved":"b-resolved",
+  "Closed":"b-resolved","Rejected":"b-reopen","Moved to Backlog":"b-nonenterprise",
   "Critical":"b-critical","High":"b-high","Medium":"b-medium","Low":"b-low",
   "Enterprise":"b-enterprise","Non-Enterprise":"b-nonenterprise"
 }};
 // Statuses considered "closed" — excluded from At Risk and overdue counts
-const CLOSED_STATUSES = new Set(["Resolved"]);
+const CLOSED_STATUSES = new Set(["Resolved", "Closed", "Rejected", "Moved to Backlog"]);
 const isOpen = t => !CLOSED_STATUSES.has(t.status);
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
